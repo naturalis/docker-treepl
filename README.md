@@ -1,7 +1,10 @@
 # docker-treepl
 
 This repo contains a snapshot of [treePL](https://github.com/blackrim/treePL)
-and a [Dockerfile](Dockerfile) that builds it into an image.
+and a [Dockerfile](Dockerfile) that builds it into an image. The purpose of 
+this is to hide some of the installation challenges that treePL users face,
+and to make the program more widely available across platforms that support
+[docker](https://www.docker.com/), albeit with some overhead.
 
 ## Installation
 
