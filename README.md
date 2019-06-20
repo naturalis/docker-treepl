@@ -32,10 +32,20 @@ executable (and the same for the configuration file once we do the invocation):
 docker run -v `pwd`/example:/input naturalis/docker-treepl /input/test.cppr8s
 ```
 
+Like all invocations of dockerized executables it starts with `docker run`.
+The salient point is that we then create an mapping from the ./example folder
+(which I here make into an absolute path by prefixing it with the output of
+`pwd`) to the /input folder. This mapping is the value of the `-v` argument.
+What follows is the fully qualified name of the image (i.e. 
+`naturalis/docker-treepl`), which internally launches the treePL executable.
+The last argument is the full path to the input file from the perspective
+of the image, i.e. `/input/test.cppr8s`.
+
+
 ## Developer section 
 
 The following sections are strictly here for people who are in the process
-of making the existing Dockefile less bad. As a quick reminder, this
+of making the existing Dockerfile less bad. As a quick reminder, this
 would probably entail updating the package installs and build instructions
 in the Dockerfile, then building, then testing (i.e. 'Running an analysis'),
 and pushing any improvements to the resulting image into the docker hub.
