@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make install && \
     cd /usr/local/src/treePL/src && \
     ./configure && \
-    make
+    make && \
+    mkdir /input
 
 CMD ["/usr/local/src/treePL/src/treePL"]
