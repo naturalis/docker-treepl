@@ -3,7 +3,18 @@
 This repo contains a snapshot of [treePL](https://github.com/blackrim/treePL)
 and a [Dockerfile](Dockerfile) that builds it into an image.
 
+## Installation
 
+The dockerized version of treePL is available on docker hub as the image
+[naturalis/treepl](https://hub.docker.com/r/naturalis/docker-treepl). You
+can install this locally using the following command:
+
+```{bash}
+docker pull naturalis/docker-treepl
+```
+
+Once this has downloaded everything successfully you should be all set to 
+run an analysis.
 
 ## Running an analysis
 
