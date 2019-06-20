@@ -8,7 +8,7 @@ and a [Dockerfile](Dockerfile) that builds it into an image.
 The basic procedure is as follows, assuming you wish to build from source:
 
 ```{bash}
-docker build --tag docker-treepl .
+docker build --tag naturalis/docker-treepl .
 ```
 
 ## Running an analysis
