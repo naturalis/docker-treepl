@@ -25,7 +25,7 @@ and then refer to the folder inside the image in our configuration file.
 
 You can see in [example/test.cppr8s](example/test.cppr8s) how we refer to
 `/input/test.tre` on line one. I.e. the [example/test.tre](example/test.tre) 
-file is going to reside inside a virtual `/input` folder from the perspective of the
+file is going to reside inside the `/input` folder from the perspective of the
 executable (and the same for the configuration file once we do the invocation):
 
 ```{bash}
