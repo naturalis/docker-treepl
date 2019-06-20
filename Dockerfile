@@ -36,4 +36,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make && \
     mkdir /input
 
-CMD ["/usr/local/src/treePL/src/treePL"]
+ENTRYPOINT ["/usr/local/src/treePL/src/treePL"]
