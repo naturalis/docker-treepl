@@ -70,3 +70,53 @@ credentials already set up, this would be (after building):
 ```{bash}
 docker push naturalis/docker-treepl
 ```
+
+### Deployment tips and tricks
+
+I developed this docker image in order to have treePL available on a shared
+resource where I did not want to pollute the environment with additional 
+libraries and updates to the dynamic library paths for all users. So, instead,
+treePL is now available as a `docker run` command. That's all well and good,
+except that it is not such a great idea if all users have access to all docker
+commands, because that would mean that they can pull/push/run anything. The
+default installation of docker on Ubuntu also makes this clear by making
+docker a `sudo` command.
+
+The way I set this up was to have a wrapper script that looks on the outside
+as if it is the actual treePL command (i.e. `treePL <infile>`) but that 
+dispatches to `docker run` under the hood. I then added the wrapper script
+to the list of allowed commands with `visudo`. 
+
+So, all the people inside group `researchers` have access to the command, as
+per the sudoers file:
+
+```
+# Allow members of group researchers to execute docker run (but not pull, etc.)
+%researchers    ALL=(ALL) NOPASSWD: /usr/local/bin/treePL
+```
+
+The script has the following privileges (so researchers can't inject other
+stuff in there):
+
+```{bash}
+ls -la /usr/local/bin/treePL
+-rwxr-xr-x 1 root root 360 Jun 21 11:13 /usr/local/bin/treePL
+```
+
+And then the script does the dispatching with the following code:
+
+```{perl}
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Cwd;
+if ( $< != 0 ) {
+	die "This command has to be run with sudo, i.e. 'sudo treePL <infile>'\n";
+}
+my $cwd = getcwd;
+my $infile = shift;
+if ( not $infile ) {
+	die "This command needs an input file, i.e. 'sudo treePL <infile>'\n";
+}
+exec("docker run -v ${cwd}:/input -w /input naturalis/docker-treepl ${infile}");
+```
