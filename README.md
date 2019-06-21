@@ -16,7 +16,7 @@ can install this locally using the following command:
 docker pull naturalis/docker-treepl
 ```
 
-Once this has downloaded everything successfully you should be all set to 
+Once this has downloaded successfully you should be all set to 
 run an analysis.
 
 ## Running an analysis
