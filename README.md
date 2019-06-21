@@ -98,14 +98,14 @@ per the sudoers file:
 The script has the following privileges (so researchers can't inject other
 stuff in there):
 
-```{bash}
+```bash
 ls -la /usr/local/bin/treePL
 -rwxr-xr-x 1 root root 360 Jun 21 11:13 /usr/local/bin/treePL
 ```
 
 And then the script does the dispatching with the following code:
 
-```{perl}
+```perl
 #!/usr/bin/perl
 use strict;
 use warnings;
