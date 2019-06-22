@@ -9,7 +9,7 @@ and to make the program more widely available across platforms that support
 ## Installation
 
 The dockerized version of treePL is available on docker hub as the image
-[naturalis/treepl](https://hub.docker.com/r/naturalis/docker-treepl). You
+[naturalis/docker-treepl](https://hub.docker.com/r/naturalis/docker-treepl). You
 can install this locally using the following command:
 
 ```{bash}
